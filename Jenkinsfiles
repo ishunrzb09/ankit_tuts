@@ -37,7 +37,7 @@ pipeline {
             }
         }
 
-        stage ("Removing Old Docker container") {
+        stage ("Deploying Docker Container") {
             steps {
                 sh 'docker run -itd --name=ankit_new_latest -p 15000:15000 ishunrzb09/${JOB_NAME}:V_${BUILD_NUMBER}' 
             }
