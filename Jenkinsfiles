@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh """#!/bin/bash
 		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-		        pip install -r requirements.txt
+		        pip install -r requirment.txt
 		        """
             }
         }
