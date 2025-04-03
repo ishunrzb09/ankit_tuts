@@ -24,6 +24,24 @@ pipeline {
                 sh 'docker rmi ishunrzb09/${JOB_NAME}:V_${BUILD_NUMBER}' 
             }
         }
+        
+        stage ("Pulling Docker images") {
+            steps {
+                sh 'docker pull ishunrzb09/${JOB_NAME}:V_${BUILD_NUMBER}' 
+            }
+        }
+
+        stage ("Removing Old Docker container") {
+            steps {
+                sh 'docker rm -f ankit_new_latest' 
+            }
+        }
+
+        stage ("Removing Old Docker container") {
+            steps {
+                sh 'docker run -itd --name=ankit_new_latest -p 15000:15000 ishunrzb09/${JOB_NAME}:V_${BUILD_NUMBER}' 
+            }
+        }
 
 
     }
