@@ -7,13 +7,12 @@ pipeline {
             }
         }
 
-        stage ("Installing Requirments") {
+        stage ("Building Docker image") {
             steps {
-                sh """#!/bin/bash
-		        pip install -r requirements.txt
-		        """
+                sh 'docker build -t ishunrzb09/${JOB_NAME}:V_${BUILD_NUMBER} .' 
             }
         }
+
 
     }
 }
