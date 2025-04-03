@@ -11,6 +11,4 @@ RUN pip install -r requirment.txt
 COPY . .
 
 EXPOSE 8000
-EXPOSE 12000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:"]
-ENTRYPOINT [ "8000" ]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
