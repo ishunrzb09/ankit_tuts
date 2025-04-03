@@ -13,6 +13,18 @@ pipeline {
             }
         }
 
+        stage ("Publish docker images") {
+            steps {
+                sh 'docker push ishunrzb09/${JOB_NAME}:V_${BUILD_NUMBER}' 
+            }
+        }
+
+        stage ("Removing Docker image from local system") {
+            steps {
+                sh 'docker rmi ishunrzb09/${JOB_NAME}:V_${BUILD_NUMBER}' 
+            }
+        }
+
 
     }
 }
