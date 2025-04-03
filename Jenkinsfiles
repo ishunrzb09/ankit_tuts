@@ -43,12 +43,22 @@ pipeline {
 		        """
             }
         }
+        
 
         stage ("Checking Django test") {
             steps {
                 sh """#!/bin/bash
 		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-		        python medical_test/manage.py test
+		        python manage.py test
+		        """
+            }
+        }
+
+        stage ("Checking Coverage") {
+            steps {
+                sh """#!/bin/bash
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
+		        coverage run manage.py test -v 2 && coverage report --fail-under=90
 		        """
             }
         }
